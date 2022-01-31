@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "prettier-eslint --write \"./{src}/**/*{ts, tsx}\"",
+    "ci": "yarn install --frozen-lockfile"
   },
   "dependencies": {
     "@js-temporal/polyfill": "^0.3.0",
