@@ -9,7 +9,7 @@ const Button = styled.a`
   cursor: pointer;
 `;
 
-const Text = styled.div`
+const Text = styled.a`
   padding: 10px;
   font-size: 2rem;
   @media (${`max-width: ${device.sm}`}) {
@@ -28,16 +28,17 @@ const UnderButtonIndicator = styled.div`
 `;
 
 interface TopbarButtonProps {
-  onClick: MouseEventHandler<Element> | undefined;
+  onClick?: MouseEventHandler<Element> | undefined;
+  href: string | undefined;
   children: React.ReactNode;
 }
 
 const TopbarButton = (props: TopbarButtonProps): JSX.Element => {
-  const { onClick, children } = props;
+  const { onClick, children, href } = props;
 
   return (
-    <Button onClick={onClick} tabIndex={0}>
-      <Text>{children}</Text>
+    <Button onClick={onClick}>
+      <Text href={href}>{children}</Text>
       <UnderButtonIndicator />
     </Button>
   );

@@ -20,6 +20,10 @@ const Wrapper = styled.div`
   @media (${`max-width: ${device.sm}`}) {
     padding: 10px 0vw;
   }
+  @media (${`max-width: calc((${device.md} + ${device.sm}) / 2)`}) {
+    height: 8rem;
+    flex-flow: column nowrap;
+  }
 `;
 
 const Home = styled.div`
@@ -33,7 +37,9 @@ const Home = styled.div`
   white-space: nowrap;
   overflow: hidden;
   @media (${`max-width: calc((${device.md} + ${device.sm}) / 2)`}) {
-    display: none;
+    max-width: 100vw;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
   }
 `;
 
@@ -51,17 +57,16 @@ const Navigation = styled.nav`
   }
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface TopbarProps {}
-
-const Topbar = (props: TopbarProps): JSX.Element => {
+const Topbar = (): JSX.Element => {
   return (
     <Wrapper>
-      <Home tabIndex={0}>Cody Duong</Home>
+      <Home>
+        <a href={'./'}>codyduong</a>
+      </Home>
       <Navigation role={'tablist'} tabIndex={0}>
-        <TopbarButton onClick={undefined}>About</TopbarButton>
-        <TopbarButton onClick={undefined}>Work</TopbarButton>
-        <TopbarButton onClick={undefined}>Contact</TopbarButton>
+        <TopbarButton href={'./about'}>about</TopbarButton>
+        <TopbarButton href={'./work'}>work</TopbarButton>
+        <TopbarButton href={'./contact'}>contact</TopbarButton>
       </Navigation>
     </Wrapper>
   );

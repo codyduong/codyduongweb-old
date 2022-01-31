@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Topbar from './components/topbar';
+import Topbar from '../components/topbar';
 import styled from 'styled-components';
-import { device } from './components/breakpoints';
+import { device } from '../components/breakpoints';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ const ContentWrapper = styled.div`
   flex-flow: column nowrap;
   flex-grow: 1;
   width: 100%;
-  padding: 50px 20vw;
+  padding: 50px 15vw;
   @media (${`max-width: ${device.lg}`}) {
     padding: 50px 10vw;
   }

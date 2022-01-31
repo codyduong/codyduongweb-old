@@ -6,28 +6,26 @@ const Age = styled.div`
   display: inline-block;
 `;
 
-const BDAY = Temporal.ZonedDateTime.from({
-  timeZone: 'America/Chicago',
-  year: 2003,
-  month: 1,
-  day: 9,
-}).toInstant().epochMilliseconds;
+interface HomeAgeProps {
+  instant: Temporal.Instant | undefined;
+}
 
-const HomeAge = (): JSX.Element => {
-  const [age, setAge] = useState(
-    Temporal.Now.instant().epochMilliseconds - BDAY
-  );
+const HomeAge = (props: HomeAgeProps): JSX.Element => {
+  const { instant = Temporal.Now.instant() } = props;
+  const epoch = instant.epochMilliseconds;
+
+  const [age, setAge] = useState(instant.epochMilliseconds - epoch);
 
   useEffect(() => {
     let mounted = true;
     const rerender = setInterval(() => {
-      mounted && setAge(Temporal.Now.instant().epochMilliseconds - BDAY);
+      mounted && setAge(Temporal.Now.instant().epochMilliseconds - epoch);
     }, 100);
     return () => {
       mounted = false;
       clearInterval(rerender);
     };
-  }, [age]);
+  }, []);
 
   return <Age>{(age / 3.154e10).toString().substring(0, 11)}</Age>;
 };

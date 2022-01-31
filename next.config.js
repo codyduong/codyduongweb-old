@@ -1,10 +1,15 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withTM = require('next-transpile-modules')(['three']);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  experimental: {
-    styledComponents: true,
+  ...withTM(),
+  ...{
+    reactStrictMode: true,
+    experimental: {
+      styledComponents: true,
+    },
   },
 };
 
-// eslint-disable-next-line no-undef
 module.exports = nextConfig;
